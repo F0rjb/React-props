@@ -1,8 +1,12 @@
 import React from "react";
-import Profile from "./componants/profile/Profile";
+import Profile, { PImage } from "./componants/profile/Profile";
 import PropTypes from "prop-types";
+import { PropaneSharp } from "@mui/icons-material";
 
 export default function App() {
+  function handleName(name) {
+    alert(name + "🕶");
+  }
   return (
     <div
       style={{
@@ -13,14 +17,16 @@ export default function App() {
       <Profile
         name="Ahmed Nasri"
         address="City Of Bassatine"
-        source="/pp.jpg"
+        source="/pp.jpg "
         profession="Geomatics and Landsurveying Eng"
-      ></Profile>
+        handleName={handleName}
+      >
+        <PImage />
+      </Profile>
     </div>
   );
 }
-Profile.PropTypes = {
+Profile.propTypes = {
   name: PropTypes.string.isRequired,
-  source: PropTypes.string.isRequired,
   profession: PropTypes.string.isRequired,
 };

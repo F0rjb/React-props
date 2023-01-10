@@ -5,17 +5,17 @@ import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 
-const Emoji = (props) => (
-  <span
-    className="emoji"
-    role="img"
-    aria-label={props.label ? props.label : ""}
-    aria-hidden={props.label ? "false" : "true"}
-  >
-    {props.symbol}
-  </span>
+export const PImage = () => (
+  <img
+    src="/pp.jpg"
+    alt=""
+    loading="lazy"
+    style={{
+      borderRadius: 10,
+      maxWidth: 309,
+    }}
+  />
 );
-
 export default function Profile(props) {
   return (
     <Card sx={{ minHeight: "280px", width: 280 }}>
@@ -26,15 +26,7 @@ export default function Profile(props) {
         }}
       />
       <CardContent sx={{ justifyContent: "flex-end" }}>
-        <img
-          src={props.source}
-          alt=""
-          loading="lazy"
-          style={{
-            borderRadius: 10,
-            maxWidth: 309,
-          }}
-        />
+        {props.children}
         <Typography level="h1" fontSize="lg" textColor="#fff" mb={1}>
           <a
             target="_blank"
@@ -62,7 +54,7 @@ export default function Profile(props) {
         </Typography>
         <button
           style={{ leftMargin: 20, cursor: "pointer" }}
-          onClick={() => handleName(props.name)}
+          onClick={() => props.handleName(props.name)}
         >
           BEHOLD ! 🫵
         </button>
@@ -70,9 +62,7 @@ export default function Profile(props) {
     </Card>
   );
 }
-function handleName(name) {
-  alert(name + "🕶");
-}
+
 Profile.defaultProps = {
   name: "John Doe",
   source: "/logo512.png",
